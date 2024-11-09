@@ -6,12 +6,22 @@ import favicon from "@/app/photos/image.png";
 
 export default function Navbar() {
   return (
-    <nav className={`flex flex-row-reverse justify-between items-center`}>
-      <Link href={`/`} className={` flex gap-5 items-center justify-center`}>
-        <p className={`font-semibold text-5xl`}>الخطوط</p>
+    <nav className={`w-full flex justify-between items-center`}>
+      <Link href={`/`} className={`w-full max-w-52 flex gap-3 items-center justify-center`}>
         <Image src={favicon} alt="alten" className="w-14" />
+        <p className={`font-medium text-xl`}>Color hunt</p>
       </Link>
-      <div className="flex gap-2">
+      <div className="w-full flex gap-2 justify-center items-center">
+        <Button
+          variant={"secondary"}
+          size={"icon"}
+          className="rounded-full"
+          aria-label="Instagram icon"
+        >
+          <Instagram />
+        </Button>
+      </div>
+      <div className="w-full max-w-80 flex gap-2 justify-center items-center">
         <Button
           variant={"secondary"}
           size={"icon"}
