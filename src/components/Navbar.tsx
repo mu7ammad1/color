@@ -1,25 +1,27 @@
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Search } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import favicon from "@/app/photos/image.png";
+import { Input } from "@/components/ui/input";
 
 export default function Navbar() {
   return (
-    <nav className={`w-full flex justify-between items-center`}>
-      <Link href={`/`} className={`w-full max-w-52 flex gap-3 items-center justify-center`}>
+    <nav className={`w-full flex justify-between items-center sticky top-0 bg-background z-50`}>
+      <Link
+        href={`/`}
+        className={`w-full max-w-52 flex gap-3 items-center justify-center`}
+      >
         <Image src={favicon} alt="alten" className="w-14" />
         <p className={`font-medium text-xl`}>Color hunt</p>
       </Link>
-      <div className="w-full flex gap-2 justify-center items-center">
-        <Button
-          variant={"secondary"}
-          size={"icon"}
-          className="rounded-full"
-          aria-label="Instagram icon"
-        >
-          <Instagram />
-        </Button>
+      <div className="w-full flex justify-center items-center p-0">
+        <div className="w-[90%] m-0 px-2 pr-5 flex gap-2 justify-center items-center border-[1px] focus-within:border-[1px] focus-within:border-offset-2 nsus rounded-full">
+          <Search />
+          <Input
+            className={`w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none border-none p-0 m-0 nsus`}
+          />
+        </div>
       </div>
       <div className="w-full max-w-80 flex gap-2 justify-center items-center">
         <Button

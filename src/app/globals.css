@@ -4,6 +4,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 @layer base {
@@ -61,12 +62,83 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+@keyframes item {
+  0% {
+    opacity: 0;
+    animation-delay: 0.4s;
+  }
+}
 
 @layer base {
   * {
     @apply border-border;
+    animation-name: item;
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+.line {
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    #000000 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  opacity: 0.1;
+  width: 100%;
+}
+.nsus {
+  font-size: 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************** GLOBAL ****************/
+body *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+.copied {
+	position: absolute;
+	background: #222222;
+	color: white;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	animation-name: copied;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.loader * {
+  animation-name:loader-bar;
+	animation-iteration-count: infinite;
+}
+@keyframes loader-bar {
+  0% { width:0%; left:0; }
+  50% { width:100%; left:0; }
+  100% { width:0%; left:100%; }
 }

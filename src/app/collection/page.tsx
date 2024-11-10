@@ -1,19 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { sql } from "@vercel/postgres";
+"use client"
+import InsertLikes from "@/components/insertLikes";
+import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/en"; // لتحميل اللغة العربية
-import Link from "next/link";
-import InsertLikes from "@/components/insertLikes";
+import { usePalettes } from "@/components/UsernameContext";
 dayjs.extend(relativeTime);
 
-export default async function Home() {
-  const { rows: palettes } = await sql`
-  SELECT color_palettes.*, COALESCE(likes.likes_count, 0) AS likes_count
-  FROM color_palettes
-  LEFT JOIN likes ON color_palettes.id = likes.id
-  ORDER BY color_palettes.created_at DESC
-`;
+export default function Collection() {
+  const { palettes } = usePalettes();
 
   return (
     <div className="w-full h-full">

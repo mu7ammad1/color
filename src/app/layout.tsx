@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Left, Right } from "@/components/Menus";
+import PalettesProvider from "@/components/UsernameContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,8 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | الخطوط",
-    default: "alkhutut | الخطوط",
+    template: "%s - Color Hunt",
+    default: "Color Hunt - Color Palettes for Designers and Artists",
   },
   description:
     "افضل خطوط عربية و انجليزية تحميل و تجربة خطوط العربية و الانجليزية الاتينية",
@@ -32,14 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full flex justify-center bg-transparent dark:bg-[#202020] box-border`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full flex justify-center bg-transparent dark:bg-[#202020]`}
       >
-        <main className="w-full flex max-w-screen-xl flex-col px-5">
+        <main className="w-full flex max-w-screen-2xl flex-col px-5">
           <Navbar />
-          <section className="flex w-full h-full *:w-full">
-            <Right />
-            {children}
-            <Left />
+          <div className="line mt-1"></div>
+          <section className="flex w-full h-full *:w-full py-5">
+            <PalettesProvider>
+              <Right />
+              <section className="px-3">{children}</section>
+              <Left />
+            </PalettesProvider>
           </section>
         </main>
       </body>

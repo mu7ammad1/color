@@ -7,13 +7,13 @@ import Link from "next/link";
 import InsertLikes from "@/components/insertLikes";
 dayjs.extend(relativeTime);
 
-export default async function Home() {
+export default async function Popular() {
   const { rows: palettes } = await sql`
-  SELECT color_palettes.*, COALESCE(likes.likes_count, 0) AS likes_count
-  FROM color_palettes
-  LEFT JOIN likes ON color_palettes.id = likes.id
-  ORDER BY color_palettes.created_at DESC
-`;
+    SELECT color_palettes.*, COALESCE(likes.likes_count, 0) AS likes_count
+    FROM color_palettes
+    LEFT JOIN likes ON color_palettes.id = likes.id
+    ORDER BY likes_count DESC
+  `;
 
   return (
     <div className="w-full h-full">
