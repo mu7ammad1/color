@@ -1,4 +1,5 @@
-"use client"
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import InsertLikes from "@/components/insertLikes";
 import Link from "next/link";
 import dayjs from "dayjs";
