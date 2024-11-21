@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Home from "../page";
 
 export default async function Page({
@@ -5,11 +6,6 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const slug = (await params).slug;
 
-  return (
-    <section>
-      <Home />
-    </section>
-  );
+  return <Home />;
 }
