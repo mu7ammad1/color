@@ -67,7 +67,7 @@ export function Right() {
   const Pathname = usePathname();
 
   return (
-    <section className="flex flex-col w-full max-w-48 pr-5 h-screen sticky top-20 overflow-y-scroll rounded-md border-none p-0">
+    <section className="flex flex-col w-full max-w-48 pr-5 h-screen sticky top-20 overflow-y-scroll rounded-md border-none p-0 max-[600px]:hidden">
       <div className="w-full flex flex-col gap-1">
         <Link
           href={`/`}
@@ -204,9 +204,9 @@ export function Right() {
 function Links(Pathname: string, href: string) {
   return (
     <Link
-      href={`/palettes/${href}`}
+      href={`/palette/${href}`}
       className={`p-2 px-4 flex gap-3 rounded-full items-center  ${
-        Pathname === `/palettes/${href}` ? `bg-stone-100` : `hover:bg-stone-50`
+        Pathname === `/palette/${href}` ? `bg-stone-100` : `hover:bg-stone-50`
       }`}
     >
       <p className="text-xs font-thin capitalize">{href}</p>

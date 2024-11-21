@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import InsertLikes from "@/components/insertLikes";
 import Link from "next/link";
@@ -6,6 +7,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { usePalettes } from "@/components/UsernameContext";
 dayjs.extend(relativeTime);
+
+
 
 export default function Collection() {
   const { palettes } = usePalettes();
@@ -28,22 +31,22 @@ export default function Collection() {
               className={`flex flex-col justify-center items-center`}
             >
               <Link
-                href={`/palettes/` + id}
+                href={`/palette/` + id}
                 className="w-full h-20 rounded-tl-xl rounded-tr-xl"
                 style={{ backgroundColor: `#${color1}` }}
               ></Link>
               <Link
-                href={`/palettes/` + id}
+                href={`/palette/` + id}
                 className="w-full h-14"
                 style={{ backgroundColor: `#${color2}` }}
               ></Link>
               <Link
-                href={`/palettes/` + id}
+                href={`/palette/` + id}
                 className="w-full h-10"
                 style={{ backgroundColor: `#${color3}` }}
               ></Link>
               <Link
-                href={`/palettes/` + id}
+                href={`/palette/` + id}
                 className="w-full h-10 rounded-bl-xl rounded-br-xl"
                 style={{ backgroundColor: `#${color4}` }}
               ></Link>

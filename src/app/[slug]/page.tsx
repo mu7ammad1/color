@@ -1,3 +1,5 @@
+import Home from "../page";
+
 export default async function Page({
   params,
 }: {
@@ -5,5 +7,9 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
 
-  return <section>{slug}</section>;
+  return (
+    <section>
+      <Home />
+    </section>
+  );
 }

@@ -1,19 +1,27 @@
 "use server";
 
-import { sql } from "@vercel/postgres";
+import { createClient } from "@/lib/server";
 
-// دالة Server Action
+// تهيئة عميل Supabase
+const supabase = createClient();
+
+// دالة Server Action لإضافة أو تحديث الإعجاب
 export async function handleInsertLike(id: string) {
   try {
     // تنفيذ الاستعلام لإضافة أو تحديث سجل الإعجاب
-    await sql`
-      INSERT INTO likes (id, likes_count)
-      VALUES (${id}, 1)
-      ON CONFLICT (id)
-      DO UPDATE 
-      SET likes_count = likes.likes_count + 1
-    `;
-    console.log('Like added or updated successfully');
+
+    const { data, error } = await (
+      await supabase
+    )
+      .from("likes_count")
+      .insert([{ likes_count: id }])
+      .select();
+
+    if (error) {
+      console.error("Error inserting/updating like:", error);
+    } else {
+      console.log("Like added or updated successfully", data);
+    }
   } catch (error) {
     console.error("Error inserting like:", error);
   }

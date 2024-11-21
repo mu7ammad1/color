@@ -3,9 +3,9 @@
 import { handleInsertLike } from "./insert-likes";
 import { usePalettes } from "./UsernameContext";
 import { usePathname } from "next/navigation";
+import { useState } from "react"; // Import useState
 
 export default function InsertLikes({
-  id,
   likes_count,
   color1,
   color2,
@@ -13,40 +13,45 @@ export default function InsertLikes({
   color4,
 }: any) {
   const { addPalette, deletePalette } = usePalettes();
+  const [currentLikesCount, setCurrentLikesCount] = useState(likes_count); // Initialize state for likes count
+
+  const paletteId = `${color1}${color2}${color3}${color4}`; // حفظ القيمة المحسوبة لإستخدامها لاحقًا
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (id) {
-      await handleInsertLike(id);
+    if (paletteId) {
+      await handleInsertLike(paletteId); // إرسال معرف اللوحة كـ id بدلاً من إضافة الألوان
     }
   };
 
   const handleAddPalette = () => {
-    const newPalette = {
-      color1,
-      color2,
-      color3,
-      color4,
-      id,
-    };
-
+    const newPalette = { color1, color2, color3, color4, id: paletteId };
     addPalette(newPalette);
+    setCurrentLikesCount(currentLikesCount + 1); // Increase likes count only when adding a palette
+  };
+
+  const handleDeletePalette = () => {
+    deletePalette(paletteId);
+    setCurrentLikesCount(currentLikesCount - 1); // Decrease likes count when deleting a palette
   };
 
   const { palettes } = usePalettes();
-  const isVerified = palettes.some((palette: any) => palette.id === id);
+  const isVerified = palettes.some((palette: any) => palette.id === paletteId); // استخدام id المحسوب للتأكد من وجود اللوحة
+
   const Pathname = usePathname();
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        onClick={isVerified ? () => deletePalette(id) : handleAddPalette}
-      >
-        <button type="submit">
+      <form onSubmit={handleSubmit}>
+        <button
+          type="submit"
+          onClick={
+            isVerified ? handleDeletePalette : handleAddPalette // Use handleDeletePalette for deletion
+          }
+        >
           <div
-            className={`flex items-center justify-center border-[1px] border-stone-200/80 p-2 px-3 gap-2 rounded-xl  ${
-              isVerified && "bg-stone-200/80"
+            className={`flex items-center justify-center border-[1px] border-stone-200/80 p-2 px-3 gap-2 rounded-xl ${
+              isVerified ? "bg-stone-200/80" : ""
             }`}
           >
             <svg
@@ -64,7 +69,7 @@ export default function InsertLikes({
               />
             </svg>
             {Pathname !== `/collection` && (
-              <span className="text-sm font-extralight">{likes_count}</span>
+              <span className="text-sm font-extralight">{currentLikesCount}</span>
             )}
           </div>
         </button>

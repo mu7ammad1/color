@@ -22,8 +22,9 @@ export const metadata: Metadata = {
     default: "Color Hunt - Color Palettes for Designers and Artists",
   },
   description:
-    "افضل خطوط عربية و انجليزية تحميل و تجربة خطوط العربية و الانجليزية الاتينية",
-};
+    "Discover the newest hand-picked color palettes of Color Hunt. Get color inspiration for your design and art projects.",
+  keywords:[]
+  };
 
 export default function RootLayout({
   children,
@@ -37,7 +38,6 @@ export default function RootLayout({
       >
         <main className="w-full flex max-w-screen-2xl flex-col px-5">
           <Navbar />
-          <div className="line mt-1"></div>
           <section className="flex w-full h-full *:w-full py-5">
             <PalettesProvider>
               <Right />
