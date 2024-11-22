@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Search } from "lucide-react";
+import { Instagram, Search } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,11 +7,11 @@ import { Input } from "@/components/ui/input";
 
 export default function Navbar() {
   return (
-    <nav className="flex flex-col w-full sticky top-0 z-50 bg-background">
+    <nav className="flex flex-col w-full sticky top-0 z-50 bg-background px-2">
       <section className={`w-full flex justify-between items-center`}>
         <Link
           href={`/`}
-          className={`w-full max-w-52 flex gap-3 items-center justify-center`}
+          className={`w-full max-w-max max-sm:max-w-fit flex gap-3 items-center justify-start`}
         >
           <Image src={favicon} alt="alten" className="w-14" />
           <p className={`font-medium text-xl max-sm:hidden`}>Color hunt</p>
@@ -24,11 +24,11 @@ export default function Navbar() {
             />
           </div>
         </div>
-        <div className="w-full max-w-80 flex gap-2 justify-center items-center">
+        <div className="w-full max-w-fit flex gap-3 justify-end items-center">
           <Button
             variant={"secondary"}
             size={"icon"}
-            className="rounded-full *:dark:fill-white"
+            className="rounded-full *:dark:fill-white max-md:hidden"
             aria-label="Cofee me"
           >
             <svg
@@ -55,10 +55,10 @@ export default function Navbar() {
           <Button
             variant={"secondary"}
             size={"icon"}
-            className="rounded-full *:dark:fill-white"
-            aria-label="Facebook icon"
+            className="rounded-full max-md:hidden"
+            aria-label="Instagram icon"
           >
-            <Facebook className="fill-stone-800" />
+            <Instagram />
           </Button>
           <Button
             variant={"secondary"}
@@ -66,7 +66,20 @@ export default function Navbar() {
             className="rounded-full"
             aria-label="Instagram icon"
           >
-            <Instagram />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill={`currentColor`}
+              viewBox="0 0 24 24"
+              strokeWidth={1}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
           </Button>
         </div>
       </section>
