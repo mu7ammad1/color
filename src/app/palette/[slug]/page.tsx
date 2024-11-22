@@ -40,17 +40,38 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // read route params
+  // قراءة معلمات المسار
   const slug = (await params).slug;
-  const Dataa = await getDataOnePalette(slug);
-  const color1 = Dataa.color1.toUpperCase();
-  const color2 = Dataa.color2.toUpperCase();
-  const color3 = Dataa.color3.toUpperCase();
-  const color4 = Dataa.color4.toUpperCase();
 
+  let color1 = "";
+  let color2 = "";
+  let color3 = "";
+  let color4 = "";
+
+  // تحقق من طول slug وإذا كان أقل من أو يساوي 10
+  if (slug.length >= 10) {
+    const Dataa = await getDataOnePalette(slug);
+
+    // تأكد من وجود البيانات وتعيين الألوان
+    if (Dataa) {
+      color1 = `Color Palette: #` + Dataa?.color1.toUpperCase();
+      color2 = `#` + Dataa?.color2.toUpperCase();
+      color3 = `#` + Dataa?.color3.toUpperCase();
+      color4 = `#` + Dataa?.color4.toUpperCase();
+    }
+  }
+  if (slug.length <= 10) {
+    const Dataa = await getDataSingleTag(slug);
+
+    // تأكد من وجود البيانات وتعيين الألوان
+    if (Dataa) {
+      color1 = slug.toUpperCase() + ` Color Palette`;
+    }
+  }
+  // إرجاع البيانات المعدلة
   return {
-    title: `Color Palette: #${color1} #${color2} #${color3} #${color4}`,
-    description: ``
+    title: `${color1} ${color2} ${color3} ${color4}`,
+    description: `This is a color palette with colors: ${color1}, ${color2}, ${color3}, and ${color4}.`,
   };
 }
 
@@ -140,7 +161,7 @@ export default async function Page({
                       color4={color4}
                     />
                     <h4 className="text-xs font-normal opacity-80">
-                      {dayjs(created_at).locale("ar").fromNow()}15
+                      {dayjs(created_at).locale("ar").fromNow()}
                     </h4>
                   </div>
                 </div>
@@ -167,7 +188,7 @@ export default async function Page({
   if (Dataa?.tags && Array.isArray(Dataa.tags)) {
     randomTag = getRandomElement(Dataa.tags);
     if (randomTag) {
-      console.log("Random Tag:", randomTag); // عرض العنصر العشوائي
+      console.log("Random Tag:", randomTag);
     } else {
       console.warn("Tags array is empty.");
     }

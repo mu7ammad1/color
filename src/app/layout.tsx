@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["https://nextjs.org/og.png"], // Must be an absolute URL
   },
   verification: {
-    google: "G-W8YDCJ8Y0P",
+    google: "G-01Z3VZQFP9",
   },
 };
 
