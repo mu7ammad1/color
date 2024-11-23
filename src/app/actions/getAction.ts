@@ -26,6 +26,24 @@ export async function getData(tableName: string) {
     return null; // العودة بقيمة null عند حدوث خطأ غير متوقع
   }
 }
+export async function getSITEMAPS() {
+  const supabase = await createClient(); // إزالة await إذا كانت createClient ليست async
+
+  try {
+    const { data, error } = await supabase.from(`colors`).select(`*`);
+
+    if (error) {
+      console.error(`Error fetching data from table colors: `, error);
+      return null;
+    }
+
+    return data;
+  } catch (unexpectedError) {
+    console.error("Unexpected error occurred:", unexpectedError);
+    return null;
+  }
+}
+
 export async function getDataOnePalette(tableName: string) {
   const supabase = await createClient(); // إزالة await إذا كانت createClient ليست async
 
