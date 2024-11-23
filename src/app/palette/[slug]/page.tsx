@@ -72,6 +72,31 @@ export async function generateMetadata(
   return {
     title: `${color1} ${color2} ${color3} ${color4}`,
     description: `This is a color palette with colors: ${color1}, ${color2}, ${color3}, and ${color4}.`,
+    keywords: [
+      "Color Hunt",
+      "colors",
+      "coolors",
+      "ColorHunt.fun",
+      "Colorful",
+      "colors palette",
+      `#${color1} `,
+      `#${color2} `,
+      `#${color3} `,
+      `#${color4} `,
+    ],
+    // Twitter
+    twitter: {
+      card: "summary_large_image",
+      title: `${color1} ${color2} ${color3} ${color4}`,
+      description: `This is a color palette with colors: ${color1}, ${color2}, ${color3}, and ${color4}.`,
+      siteId: "1467726470533754880",
+      creator: "@colorhunt.fun",
+      creatorId: "1467726470533754880",
+      images: {
+        url: "https://colorhunt.fun/backgound.png",
+        alt: "colorhunt.fun Logo",
+      },
+    },
   };
 }
 
@@ -199,9 +224,9 @@ export default async function Page({
   const Data = await getDataSingleTag(`${randomTag}`);
 
   return (
-    <section className="w-full">
-      <div className="w-full h-full flex justify-center items-center">
-        <div className="w-full flex flex-col justify-center items-center px-16 pt-7 max-w-[72vh]">
+    <section className="w-full flex flex-col">
+      <div className="w-full  flex justify-center items-center">
+        <div className="w-full flex flex-col justify-center items-center px-16 max-lg:px-0 pt-7 max-w-[72vh]">
           <div
             className={`w-full h-56 rounded-tl-xl rounded-tr-xl`}
             style={{ backgroundColor: `#${Dataa?.color1}` }}
@@ -256,7 +281,7 @@ export default async function Page({
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-col justify-center items-center my-10">
+      <div className="w-full flex flex-col justify-center items-center my-10">
         <div className="w-4/5 flex justify-center items-center gap-3 text-sm">
           {[Dataa?.color1, Dataa?.color2, Dataa?.color3, Dataa?.color4].map(
             (color, index) => (
