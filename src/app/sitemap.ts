@@ -10,15 +10,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://colorhunt.fun",
       lastModified: "2021-01-01",
       changeFrequency: "weekly",
-      priority: 0.5,
-      images: ["https://example.com/image.jpg"],
+      priority: 1,
     },
     {
-      url: "https://colorhunt.fun/palette/83580bd9b650f5dd7bfde994",
+      url: "https://colorhunt.fun/collection",
       lastModified: "2021-01-01",
       changeFrequency: "weekly",
-      priority: 0.5,
-      images: ["https://example.com/83580bd9b650f5dd7bfde994.jpg"],
+      priority: 0.7,
+    },
+    {
+      url: "https://colorhunt.fun/palette",
+      lastModified: "2021-01-01",
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: "https://colorhunt.fun/popular",
+      lastModified: "2021-01-01",
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: "https://colorhunt.fun/random",
+      lastModified: "2021-01-01",
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
   ];
 
@@ -26,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const dynamicEntries: MetadataRoute.Sitemap =
     Dataa?.map((item) => ({
       url: `https://colorhunt.fun/palette/${item.id}`,
-      lastModified: item.lastModified || new Date().toISOString(),
+      lastModified: item.lastModified || `2021-01-01`,
       changeFrequency: "weekly",
       priority: 0.5,
       images: [`https://colorhunt.fun/og/${item.id}.png`], // Dynamic image URL
