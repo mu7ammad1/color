@@ -59,6 +59,11 @@ export function Left() {
           </div>
         ))}
       </div>
+      <div className="flex flex-wrap gap-3 py-5 pt-10 text-sm text-stone-600">
+        <Link href={`/about`} className="flex hover:underline underline-offset-8">About</Link>
+        <Link href={`/term`} className="flex hover:underline underline-offset-8">Terms of Service</Link>
+        <Link href={`/privacy`} className="flex hover:underline underline-offset-8">Privacy Policy</Link>
+      </div>
     </div>
   );
 }
