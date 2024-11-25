@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import InsertLikes from "@/components/insertLikes";
 import Link from "next/link";
+import "dayjs/locale/en"; // Load English locale
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { usePalettes } from "@/components/UsernameContext";

@@ -13,6 +13,7 @@ import {
 } from "@/components/copyToClipboard";
 import { getDataOnePalette, getDataSingleTag } from "@/app/actions/getAction";
 import type { Metadata, ResolvingMetadata } from "next";
+import DownloadButton from "./onCllick";
 
 // Add support for relative time comparisons
 dayjs.extend(relativeTime);
@@ -259,9 +260,13 @@ export default async function Page({
                 color3={Dataa?.color3}
                 color4={Dataa?.color4}
               />
-              <Button variant={"outline"} size={"default"}>
-                Image
-              </Button>
+              <DownloadButton
+                color1={Dataa?.color1}
+                color2={Dataa?.color2}
+                color3={Dataa?.color3}
+                color4={Dataa?.color4}
+              />
+
               <Button variant={"outline"} size={"default"}>
                 <CopyToClipboardLink
                   link={`https://colorhunt.co/palette/${

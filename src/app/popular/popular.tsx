@@ -4,7 +4,7 @@ import { usePopular } from "@/hooks/usePalettes";
 import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/ar";
+import "dayjs/locale/en"; // Load English locale
 import InsertLikes from "@/components/insertLikes";
 import { useEffect, useRef } from "react";
 

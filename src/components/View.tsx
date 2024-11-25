@@ -5,7 +5,7 @@ import { createClient } from "@/lib/client";
 import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/ar";
+import "dayjs/locale/en"; // Load English locale
 import InsertLikes from "@/components/insertLikes";
 
 // إعداد Day.js لتنسيقات الوقت
